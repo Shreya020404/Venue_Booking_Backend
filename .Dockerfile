@@ -17,7 +17,7 @@ COPY src ./src
 RUN chmod +x gradlew
 
 # Build the application
-RUN ./gradlew build -x test
+RUN ./gradlew clean build -x test
 
 # Second stage: Create a smaller image for the application
 FROM openjdk:17-jdk-slim
@@ -33,4 +33,3 @@ EXPOSE 8080
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
