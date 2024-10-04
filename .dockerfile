@@ -13,6 +13,9 @@ COPY settings.gradle .
 # Copy the source code
 COPY src ./src
 
+# Give execute permissions to the Gradle wrapper
+RUN chmod +x gradlew
+
 # Build the application
 RUN ./gradlew build -x test
 
@@ -30,3 +33,4 @@ EXPOSE 8080
 
 # Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
